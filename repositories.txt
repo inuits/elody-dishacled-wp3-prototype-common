@@ -1,0 +1,1 @@
+git@github.com:inuits/elody-dishacled-wp3-prototype-elody-module.git client-frontend/inuits-dams-graphql-service
