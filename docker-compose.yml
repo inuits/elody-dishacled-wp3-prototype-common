@@ -54,7 +54,7 @@ services:
       - "./client-collection-module/api/apps/mappers.py:/app/api/apps/mappers.py"
       - "./client-collection-module/api/apps/permissions.py:/app/api/apps/permissions.py"
       - "./client-collection-module/api/apps/roles:/app/api/apps/roles"
-      - "./client-collection-module/api/apps/dishacled-wp3-prototype:/app/api/apps/dishacled-wp3-prototype"
+      - "./client-collection-module/api/apps/dishacled:/app/api/apps/dishacled"
     networks:
       elody:
         aliases:
