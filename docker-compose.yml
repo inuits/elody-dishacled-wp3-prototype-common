@@ -1,8 +1,6 @@
 version: "3.4"
 include:
   - ../../docker-compose-include.yml
-  - ../../docker-compose-include-storage-api.yml
-  - ../../docker-compose-include-filesystem-importer-service.yml
 
 services:
   collection-api:
