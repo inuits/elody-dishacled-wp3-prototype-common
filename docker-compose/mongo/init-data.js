@@ -1,6 +1,6 @@
 const conn = new Mongo();
 
-const db = conn.getDB("dishacled-wp3-prototype");
+const db = conn.getDB("dishacled-wp3-prototype-elody");
 
 const dataToInsert = [
   {
