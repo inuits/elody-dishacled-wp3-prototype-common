@@ -499,6 +499,26 @@
       },
       "notBefore": 0,
       "groups": []
+    },
+    {
+      "id": "c9af8ce6-a8c5-4db6-981d-c897d0f30a38",
+      "username": "developers",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Inuits",
+      "lastName": "Developers",
+      "email": "developers@inuits.eu",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "developers"
+        }
+      ],
+      "clientRoles": {
+        "dishacled-wp3-prototype-dashboard-elody": [
+          "superAdmin"
+        ]
+      }
     }
   ],
   "scopeMappings": [
@@ -871,7 +891,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "b369418d-efbb-4b7e-9a3f-894d72842284",
       "redirectUris": [
         "http://dashboard.dishacled-wp3-prototype-elody.localhost:8000/*"
       ],
