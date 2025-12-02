@@ -12,6 +12,7 @@ const config: CodegenConfig = {
   documents: [
     "./inuits-dams-graphql-service/src/queries/*.queries.ts",
     "./inuits-dams-graphql-service/src/queries/*/*.queries.ts",
+    "./inuits-dams-graphql-service/src/queries/*/*/*.queries.ts",
     "./inuits-dams-graphql-service/modules/*/queries/*.queries.ts",
     "./inuits-dams-graphql-service/modules/*/baseModule/queries/*.queries.ts",
     "./modules/*/queries/*.queries.ts",
