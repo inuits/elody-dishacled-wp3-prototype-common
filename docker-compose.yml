@@ -129,20 +129,6 @@ services:
       - "../../modules:/app/inuits-dams-graphql-service/modules"
       - "../../inuits-dams-pwa:/app/inuits-dams-pwa"
       - "../../packages:/app/inuits-dams-graphql-service/packages"
-      - "/app/.pnpm-store"
-      - "/app/node_modules"
-      - "/app/inuits-dams-pwa/node_modules"
-      - "/app/inuits-dams-graphql-service/node_modules"
-      - "/app/inuits-dams-graphql-service/modules/advancedFiltersModule/node_modules"
-      - "/app/inuits-dams-graphql-service/modules/advancedSearchModule/node_modules"
-      - "/app/inuits-dams-graphql-service/modules/baseGraphql/node_modules"
-      - "/app/inuits-dams-graphql-service/modules/baseModule/node_modules"
-      - "/app/inuits-dams-graphql-service/modules/importModule/node_modules"
-      - "/app/inuits-dams-graphql-service/modules/mediafileModule/node_modules"
-      - "/app/inuits-dams-graphql-service/modules/savedSearchModule/node_modules"
-      - "/app/inuits-dams-graphql-service/generated-types"
-      - "/app/inuits-dams-pwa/src/generated-types"
-      - "/app/packages/session-vue-3-oidc-library/node_modules"
     networks:
       elody:
         aliases:
