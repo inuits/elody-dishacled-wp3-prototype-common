@@ -7,8 +7,9 @@
   },
   "dependencies": {
     "dams": "^0.0.0",
+    "inuits-apollo-server-auth": "1.0.x",
     "session-vue-3-oidc-library": "0.1.55",
-    "demo-apollo-server-webpack-hmr": "^0.0.1"
+    "elody-graphql-service": "^0.0.1"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^3.2.1",

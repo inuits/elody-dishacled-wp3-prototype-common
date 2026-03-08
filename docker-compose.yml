@@ -83,6 +83,8 @@ services:
       target: development-stage
       args:
         PROJECT_FOLDER: ${PROJECT_FOLDER}
+        NPM_CONFIG_REGISTRY: ${NPM_CONFIG_REGISTRY}
+        NPM_CONFIG__AUTH_TOKEN: ${NPM_CONFIG__AUTH_TOKEN}
     environment:
       # Graphql variables
       - PORT=4001
@@ -117,18 +119,34 @@ services:
       # Dashboard variables
       - VUE_APP_AUTH=false
       - VUE_APP_INDEX=false
-      - VUE_APP_CONFIG_URL=/api/config
+
 
       - APP_ENV=dev
       - NPM_CONFIG_REGISTRY
       - NPM_CONFIG__AUTH_TOKEN
       - NPM_CONFIG_ALWAYS_AUTH
+      - PROJECT_PORT
 
     volumes:
       - "./client-frontend:/app"
       - "../../modules:/app/inuits-dams-graphql-service/modules"
       - "../../inuits-dams-pwa:/app/inuits-dams-pwa"
       - "../../packages:/app/inuits-dams-graphql-service/packages"
+      - "dishacled-wp3-root-node-modules:/app/node_modules"
+      - "pwa-vite-cache:/app/node_modules/.vite"
+      - "dishacled-wp3-pwa-node-modules:/app/inuits-dams-pwa/node_modules"
+      - "dishacled-wp3-graphql-node-modules:/app/inuits-dams-graphql-service/node_modules"
+      - "dishacled-wp3-adv-filters-node-modules:/app/inuits-dams-graphql-service/modules/advancedFiltersModule/node_modules"
+      - "dishacled-wp3-adv-search-node-modules:/app/inuits-dams-graphql-service/modules/advancedSearchModule/node_modules"
+      - "dishacled-wp3-base-graphql-node-modules:/app/inuits-dams-graphql-service/modules/baseGraphql/node_modules"
+      - "dishacled-wp3-base-module-node-modules:/app/inuits-dams-graphql-service/modules/baseModule/node_modules"
+      - "dishacled-wp3-import-node-modules:/app/inuits-dams-graphql-service/modules/importModule/node_modules"
+      - "dishacled-wp3-mediafile-node-modules:/app/inuits-dams-graphql-service/modules/mediafileModule/node_modules"
+      - "dishacled-wp3-saved-search-node-modules:/app/inuits-dams-graphql-service/modules/savedSearchModule/node_modules"
+      - "dishacled-wp3-graphql-generated-types:/app/inuits-dams-graphql-service/generated-types"
+      - "dishacled-wp3-pwa-generated-types:/app/inuits-dams-pwa/src/generated-types"
+      - "dishacled-wp3-auth-pkg-node-modules:/app/packages/inuits-apollo-server-auth/node_modules"
+      - "dishacled-wp3-session-pkg-node-modules:/app/packages/session-vue-3-oidc-library/node_modules"
     networks:
       elody:
         aliases:
@@ -145,6 +163,23 @@ services:
       - "traefik.http.services.${TRAEFIK_PROJECT_NAMESPACE}-dashboard.loadbalancer.server.port=8080"
     profiles:
       - frontend
+
+volumes:
+  pwa-vite-cache:
+  dishacled-wp3-root-node-modules:
+  dishacled-wp3-pwa-node-modules:
+  dishacled-wp3-graphql-node-modules:
+  dishacled-wp3-adv-filters-node-modules:
+  dishacled-wp3-adv-search-node-modules:
+  dishacled-wp3-base-graphql-node-modules:
+  dishacled-wp3-base-module-node-modules:
+  dishacled-wp3-import-node-modules:
+  dishacled-wp3-mediafile-node-modules:
+  dishacled-wp3-saved-search-node-modules:
+  dishacled-wp3-graphql-generated-types:
+  dishacled-wp3-pwa-generated-types:
+  dishacled-wp3-auth-pkg-node-modules:
+  dishacled-wp3-session-pkg-node-modules:
 
 networks:
   traefik:
