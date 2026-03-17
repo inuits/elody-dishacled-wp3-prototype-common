@@ -2,7 +2,7 @@
   "name": "inuits-frontend",
   "version": "0.0.0",
   "scripts": {
-    "generate": "pnpm graphql-code-generator --config ./codegen.ts",
+    "generate": "pnpm graphql-code-generator --config ./codegen.ts && sh ./sync-type-defs.sh",
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
