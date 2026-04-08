@@ -132,21 +132,8 @@ services:
       - "../../modules:/app/inuits-dams-graphql-service/modules"
       - "../../inuits-dams-pwa:/app/inuits-dams-pwa"
       - "../../packages:/app/inuits-dams-graphql-service/packages"
-      - "dishacled-wp3-root-node-modules:/app/node_modules"
-      - "pwa-vite-cache:/app/node_modules/.vite"
-      - "dishacled-wp3-pwa-node-modules:/app/inuits-dams-pwa/node_modules"
-      - "dishacled-wp3-graphql-node-modules:/app/inuits-dams-graphql-service/node_modules"
-      - "dishacled-wp3-adv-filters-node-modules:/app/inuits-dams-graphql-service/modules/advancedFiltersModule/node_modules"
-      - "dishacled-wp3-adv-search-node-modules:/app/inuits-dams-graphql-service/modules/advancedSearchModule/node_modules"
-      - "dishacled-wp3-base-graphql-node-modules:/app/inuits-dams-graphql-service/modules/baseGraphql/node_modules"
-      - "dishacled-wp3-base-module-node-modules:/app/inuits-dams-graphql-service/modules/baseModule/node_modules"
-      - "dishacled-wp3-import-node-modules:/app/inuits-dams-graphql-service/modules/importModule/node_modules"
-      - "dishacled-wp3-mediafile-node-modules:/app/inuits-dams-graphql-service/modules/mediafileModule/node_modules"
-      - "dishacled-wp3-saved-search-node-modules:/app/inuits-dams-graphql-service/modules/savedSearchModule/node_modules"
-      - "dishacled-wp3-graphql-generated-types:/app/inuits-dams-graphql-service/generated-types"
-      - "dishacled-wp3-pwa-generated-types:/app/inuits-dams-pwa/src/generated-types"
-      - "dishacled-wp3-auth-pkg-node-modules:/app/packages/inuits-apollo-server-auth/node_modules"
-      - "dishacled-wp3-session-pkg-node-modules:/app/packages/session-vue-3-oidc-library/node_modules"
+      - "../../docker-compose/frontend/entrypoint.sh:/entrypoint.sh"
+      - "node_modules:/app/node_modules"
     networks:
       elody:
         aliases:
@@ -164,24 +151,11 @@ services:
     profiles:
       - frontend
 
-volumes:
-  pwa-vite-cache:
-  dishacled-wp3-root-node-modules:
-  dishacled-wp3-pwa-node-modules:
-  dishacled-wp3-graphql-node-modules:
-  dishacled-wp3-adv-filters-node-modules:
-  dishacled-wp3-adv-search-node-modules:
-  dishacled-wp3-base-graphql-node-modules:
-  dishacled-wp3-base-module-node-modules:
-  dishacled-wp3-import-node-modules:
-  dishacled-wp3-mediafile-node-modules:
-  dishacled-wp3-saved-search-node-modules:
-  dishacled-wp3-graphql-generated-types:
-  dishacled-wp3-pwa-generated-types:
-  dishacled-wp3-auth-pkg-node-modules:
-  dishacled-wp3-session-pkg-node-modules:
 
 networks:
   traefik:
   elody:
     name: elody
+
+volumes:
+  node_modules:

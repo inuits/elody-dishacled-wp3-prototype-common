@@ -6,21 +6,18 @@
     "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "dams": "^0.0.0",
-    "inuits-apollo-server-auth": "1.0.x",
-    "session-vue-3-oidc-library": "0.1.55",
-    "elody-graphql-service": "^0.0.1"
+    "session-vue-3-oidc-library": "0.1.55"
   },
   "devDependencies": {
-    "@graphql-codegen/add": "^3.2.1",
-    "@graphql-codegen/cli": "^2.16.5",
-    "@graphql-codegen/graphql-modules-preset": "^2.5.12",
-    "@graphql-codegen/typed-document-node": "2.3.13",
-    "@graphql-codegen/typescript": "^2.8.8",
-    "@graphql-codegen/typescript-operations": "^2.5.13",
-    "@graphql-codegen/typescript-resolvers": "^2.7.13",
+    "@graphql-codegen/add": "^6.0.0",
+    "@graphql-codegen/cli": "^6.2.1",
+    "@graphql-codegen/graphql-modules-preset": "^5.1.4",
+    "@graphql-codegen/typed-document-node": "6.1.7",
+    "@graphql-codegen/typescript": "^5.0.9",
+    "@graphql-codegen/typescript-operations": "^5.0.9",
+    "@graphql-codegen/typescript-resolvers": "^5.1.7",
     "graphql": "^16.6.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.0"
+    "typescript": "^6.0.2"
   }
 }
