@@ -133,7 +133,7 @@ services:
       - "../../inuits-dams-pwa:/app/inuits-dams-pwa"
       - "../../packages:/app/inuits-dams-graphql-service/packages"
       - "../../docker-compose/frontend/entrypoint.sh:/entrypoint.sh"
-      - "node_modules:/app/node_modules"
+      - "/app/node_modules"
       - "/app/inuits-dams-graphql-service/node_modules"
       - "/app/inuits-dams-pwa/node_modules"
     networks:
@@ -158,6 +158,3 @@ networks:
   traefik:
   elody:
     name: elody
-
-volumes:
-  node_modules:
