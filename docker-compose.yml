@@ -83,8 +83,11 @@ services:
       target: development-stage
       args:
         PROJECT_FOLDER: ${PROJECT_FOLDER}
-        NPM_CONFIG_REGISTRY: ${NPM_CONFIG_REGISTRY}
-        NPM_CONFIG__AUTH_TOKEN: ${NPM_CONFIG__AUTH_TOKEN}
+        # Public registry by default; internal packages resolve from the
+        # pnpm workspace (link-workspace-packages in client-frontend/.npmrc).
+        # Shell-level NPM_CONFIG_* vars (nexus) are deliberately not used.
+        NPM_CONFIG_REGISTRY: ${DISHACLED_NPM_REGISTRY:-https://registry.npmjs.org/}
+        NPM_CONFIG__AUTH_TOKEN: ${DISHACLED_NPM_AUTH_TOKEN:-}
     environment:
       # Graphql variables
       - PORT=4001
@@ -122,9 +125,9 @@ services:
 
 
       - APP_ENV=dev
-      - NPM_CONFIG_REGISTRY
-      - NPM_CONFIG__AUTH_TOKEN
-      - NPM_CONFIG_ALWAYS_AUTH
+      - NPM_CONFIG_REGISTRY=${DISHACLED_NPM_REGISTRY:-https://registry.npmjs.org/}
+      - NPM_CONFIG__AUTH_TOKEN=${DISHACLED_NPM_AUTH_TOKEN:-}
+      - NPM_CONFIG_ALWAYS_AUTH=false
       - PROJECT_PORT
 
     volumes:
