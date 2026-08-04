@@ -46,5 +46,6 @@ tasks:
       - echo "Click to open Keycloak (admin/admin) http://keycloak.localhost:$PROJECT_PORT/auth"
       - echo "Click to open Minio (minio/minio_secret) http://minio-console.$TRAEFIK_PROJECT_NAMESPACE.localhost:$PROJECT_PORT"
       - echo "Click to open RabbitMQ Admin (guest/guest) http://rabbitmq.$TRAEFIK_PROJECT_NAMESPACE.localhost:$PROJECT_PORT"
+      - echo "Click to open elody Docs http://docs.localhost:$PROJECT_PORT"
       - echo "Click to open Traefik http://traefik.$TRAEFIK_PROJECT_NAMESPACE.localhost:$PROJECT_PORT"
     silent: true
