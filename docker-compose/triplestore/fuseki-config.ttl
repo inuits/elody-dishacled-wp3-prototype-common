@@ -1,0 +1,16 @@
+@prefix fuseki: <http://jena.apache.org/fuseki#> .
+@prefix ja:     <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix :       <#> .
+
+:service a fuseki:Service ;
+    fuseki:name     "alerts" ;
+    fuseki:endpoint [ fuseki:operation fuseki:query ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:query ; fuseki:name "sparql" ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:gsp-r ; fuseki:name "get" ] ;
+    fuseki:dataset  :dataset .
+
+:dataset a ja:MemoryDataset ;
+    ja:namedGraph [
+        ja:graphName "http://mu.semte.ch/graphs/errors" ;
+        ja:data      "/staging/alerts.ttl" ;
+    ] .

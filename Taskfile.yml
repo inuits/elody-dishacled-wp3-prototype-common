@@ -40,6 +40,8 @@ tasks:
       - echo "Click to open the elody Storage API specs $STORAGE_API_URL_EXT/spec/dams-storage-api.json"
       - echo "Click to open the elody Ocr Service $OCR_SERVICE_URL_EXT/api/docs"
       - echo "Click to open the elody Ocr Service specs $OCR_SERVICE_URL_EXT/spec/inuits-dams-ocr-service.json"
+      - echo "Click to open the alert triplestore (Fuseki) http://triplestore.$PROJECT_DOMAIN:$PROJECT_PORT/"
+      - echo "Alert SPARQL endpoint $ALERT_SPARQL_ENDPOINT_EXT (named graph $ALERT_GRAPH)"
       - echo -e "\n\e[1;32mTOOLS\e[0m"
       - echo "Click to open Dozzle http://dozzle.localhost:$PROJECT_PORT"
       - echo "Click to open Docs http://docs.$TRAEFIK_PROJECT_NAMESPACE.localhost:$PROJECT_PORT"

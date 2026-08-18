@@ -31,6 +31,9 @@ services:
       - STORAGE_API_URL
       - STORAGE_API_URL_EXT
 
+      - ALERT_SPARQL_ENDPOINT
+      - ALERT_GRAPH
+
       - APPS_MANIFEST
       - AUTO_CREATE_TENANTS
       - IGNORE_PERMISSIONS
@@ -155,6 +158,27 @@ services:
       - "traefik.http.services.${TRAEFIK_PROJECT_NAMESPACE}-dashboard.loadbalancer.server.port=8080"
     profiles:
       - frontend
+
+  triplestore:
+    image: stain/jena-fuseki:5.1.0
+    command: ["/jena-fuseki/fuseki-server", "--conf=/staging/fuseki-config.ttl"]
+    environment:
+      - ADMIN_PASSWORD=admin
+      - JVM_ARGS=-Xmx512m
+    volumes:
+      - "./docker-compose/triplestore/fuseki-config.ttl:/staging/fuseki-config.ttl:ro"
+      - "./client-collection-module/api/apps/dishacled/shacl/catalog/alerts.ttl:/staging/alerts.ttl:ro"
+    networks:
+      elody:
+        aliases:
+          - triplestore-${PROJECT_FOLDER}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${TRAEFIK_PROJECT_NAMESPACE}-triplestore.service=${TRAEFIK_PROJECT_NAMESPACE}-triplestore"
+      - "traefik.http.routers.${TRAEFIK_PROJECT_NAMESPACE}-triplestore.rule=Host(`triplestore.${PROJECT_DOMAIN}`) && PathPrefix(`/`)"
+      - "traefik.http.services.${TRAEFIK_PROJECT_NAMESPACE}-triplestore.loadbalancer.server.port=3030"
+    profiles:
+      - backend
 
 
 networks:
