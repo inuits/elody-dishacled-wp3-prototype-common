@@ -2,6 +2,17 @@
 @prefix ja:     <http://jena.hpl.hp.com/2005/11/Assembler#> .
 @prefix :       <#> .
 
+# One store, two services over the same dataset.
+#
+# `/alerts` is the read-only alert fixture (#162311) and stays exactly as it
+# was: the demonstrator's error graph is written by the pipeline, not by us.
+# `/store` is the central store of the demonstrator architecture -- the place
+# Elody publishes pipeline definitions to and the toolchain generator reads
+# them from -- so it carries the write operations. They share the dataset
+# because it is one store; only the name and the permissions differ.
+[] a fuseki:Server ;
+    fuseki:services ( :service :store ) .
+
 :service a fuseki:Service ;
     fuseki:name     "alerts" ;
     fuseki:endpoint [ fuseki:operation fuseki:query ] ;
@@ -9,6 +20,19 @@
     fuseki:endpoint [ fuseki:operation fuseki:gsp-r ; fuseki:name "get" ] ;
     fuseki:dataset  :dataset .
 
+:store a fuseki:Service ;
+    fuseki:name     "store" ;
+    fuseki:endpoint [ fuseki:operation fuseki:query ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:query ;  fuseki:name "sparql" ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:update ; fuseki:name "update" ] ;
+    fuseki:endpoint [ fuseki:operation fuseki:gsp-r ;  fuseki:name "get" ] ;
+    # Elody publishes a pipeline definition by replacing its named graph here.
+    fuseki:endpoint [ fuseki:operation fuseki:gsp-rw ; fuseki:name "data" ] ;
+    fuseki:dataset  :dataset .
+
+# In memory on purpose: this is a local fixture of the shared store, so it is
+# reseeded from the files below on every start. Published pipeline definitions
+# do not survive a restart -- saving the pipeline again republishes it.
 :dataset a ja:MemoryDataset ;
     ja:namedGraph [
         ja:graphName "http://mu.semte.ch/graphs/errors" ;
